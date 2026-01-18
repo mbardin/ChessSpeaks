@@ -31,50 +31,43 @@ int ledState3 = 0;
 int ledState4 = 0;
 int ledState5 = 0;
 
-// trigger stateswaps for each LED
-int swap1 = 0;
-int swap2 = 0;
-int swap3 = 0;
-int swap4 = 0;
-int swap5 = 0;
-
 void setup() {
-// Switch Pin inputs  
+  // Switch Pin inputs
   pinMode(rPin1, INPUT);
   pinMode(rPin2, INPUT);
   pinMode(rPin3, INPUT);
   pinMode(rPin4, INPUT);
   pinMode(rPin5, INPUT);
 
-// LED outputs
+  // LED outputs
   pinMode(LED1, OUTPUT);
   pinMode(LED2, OUTPUT);
   pinMode(LED3, OUTPUT);
   pinMode(LED4, OUTPUT);
   pinMode(LED5, OUTPUT);
-// begin Serial Communication
+  
+  // begin Serial Communication
   Serial.begin(9600);
 }
 
-void loop() { 
-// tidy up into more functional code.
+void loop() {
+  // tidy up into more functional code.
 
-// store current switch state for all switches
+  // store current switch state for all switches
   rVal1 = digitalRead(rPin1);
   rVal2 = digitalRead(rPin2);
   rVal3 = digitalRead(rPin3);
   rVal4 = digitalRead(rPin4);
   rVal5 = digitalRead(rPin5);
 
-// this repeats for all switches. move into seperate function.
+  // this repeats for all switches. move into seperate function.
   if (rVal1) { // if switch is closed
     ledState1 = 1; // turn LED on
     digitalWrite(LED1, ledState1); // turn LED on
-    Serial.print(rPin1); // send pin number and state 
+    Serial.print(rPin1); // send pin number and state
     Serial.print(" ");
     Serial.print(rVal1);
     Serial.print(" ");
-    swap1 = ledState1; // avoids repeated triggers. May not be needed in current version
   }
   else {
     ledState1 = 0; // if switch is open
@@ -83,7 +76,6 @@ void loop() {
     Serial.print(" ");
     Serial.print(rVal1);
     Serial.print(" ");
-    swap1 = ledState1; // avoids repeated triggers. May not be needed in current version
   }
 
   if (rVal2) { // repeats for all 5 pins...
@@ -93,7 +85,6 @@ void loop() {
     Serial.print(" ");
     Serial.print(rVal2);
     Serial.print(" ");
-    swap2 = ledState2;
   }
   else {
     ledState2 = 0;
@@ -102,7 +93,6 @@ void loop() {
     Serial.print(" ");
     Serial.print(rVal2);
     Serial.print(" ");
-    swap2 = ledState2;
   }
 
   if (rVal3) {
@@ -112,7 +102,6 @@ void loop() {
     Serial.print(" ");
     Serial.print(rVal3);
     Serial.print(" ");
-    swap3 = ledState3;
   }
   else {
     ledState3 = 0;
@@ -121,7 +110,6 @@ void loop() {
     Serial.print(" ");
     Serial.print(rVal3);
     Serial.print(" ");
-    swap3 = ledState3;
   }
 
   if (rVal4) {
@@ -131,7 +119,6 @@ void loop() {
     Serial.print(" ");
     Serial.print(rVal4);
     Serial.print(" ");
-    swap4 = ledState4;
   }
   else {
     ledState4 = 0;
@@ -140,7 +127,6 @@ void loop() {
     Serial.print(" ");
     Serial.print(rVal4);
     Serial.print(" ");
-    swap4 = ledState4;
   }
 
   if (rVal5) {
@@ -150,7 +136,6 @@ void loop() {
     Serial.print(" ");
     Serial.print(rVal5);
     Serial.print(" ");
-    swap5 = ledState5;
   }
   else {
     ledState5 = 0;
@@ -159,7 +144,6 @@ void loop() {
     Serial.print(" ");
     Serial.print(rVal5);
     Serial.print(" ");
-    swap5 = ledState5;
   }
   Serial.println(); // new line for each reading.
 }
